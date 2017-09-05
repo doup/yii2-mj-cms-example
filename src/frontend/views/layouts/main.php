@@ -27,8 +27,7 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-
-<div class="wrap">
+<main>
     <?php
     $menu = Menu::findOne([ 'key' => 'main-menu', ]);
     if (isset($menu)) {
@@ -41,6 +40,7 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+    /*
     if (isset($menu)) {
         $menuItems = $menu;
     } else {
@@ -59,26 +59,19 @@ AppAsset::register($this);
                 'post') . Html::submitButton('Logout (' . Yii::$app->user->identity->username . ')',
                 [ 'class' => 'btn btn-link logout' ]) . Html::endForm() . '</li>';
     }
+    */
     echo Nav::widget([
         'options' => [ 'class' => 'navbar-nav navbar-right' ],
         'items'   => $menuItems,
     ]);
     NavBar::end();
-    ?>
-
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params[ 'breadcrumbs' ]) ? $this->params[ 'breadcrumbs' ] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
-</div>
+    ?>   
+    <?= $content ?> 
+</main>
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
+        <p class="pull-left">&copy; doup, <?= date('Y') ?></p>
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
